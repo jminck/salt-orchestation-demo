@@ -38,10 +38,10 @@ Vagrant.configure("2") do |config|
   config.vm.define "salt", primary: true do |master|
     master.vm.hostname = "salt"
     master.vm.network "private_network", ip: "10.10.10.10"
-    master.vm.synced_folder "salt/roots/states", "/srv/salt/", type: "nfs"
-    master.vm.synced_folder "salt/roots/formulas", "/srv/formulas/", type: "nfs"
-    master.vm.synced_folder "salt/roots/pillar", "/srv/pillar/", type: "nfs"
-    master.vm.synced_folder "salt/roots/reactor", "/srv/reactor/", type: "nfs"
+    master.vm.synced_folder "salt/roots/states", "/srv/salt/"
+    master.vm.synced_folder "salt/roots/formulas", "/srv/formulas/"
+    master.vm.synced_folder "salt/roots/pillar", "/srv/pillar/"
+    master.vm.synced_folder "salt/roots/reactor", "/srv/reactor/"
     master.vm.provision :salt do |salt|
       salt.install_master = true
       salt.grains_config = "salt/grains-master.yml"
